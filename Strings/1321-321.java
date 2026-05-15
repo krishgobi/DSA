@@ -1,4 +1,31 @@
+// /*
+// ------------------------------------------------------------
+// Problem: Remove Digit From Number to Maximize Result
+// ------------------------------------------------------------
 
+// Description:
+// You are given:
+// 1. A string number representing a positive integer.
+// 2. A character digit.
+
+// Remove exactly one occurrence of digit from number
+// such that the resulting number becomes maximum.
+
+// Return the maximum value possible after removal.
+
+// ------------------------------------------------------------
+// Input:
+// number = "5678"
+// digit  = "5"
+
+// Output:
+// 678
+
+// Explanation:
+// Removing '5' from "5678" gives:
+// "678"
+
+// This is the maximum possible value.
 import java.util.*;
 public class Main
 {
