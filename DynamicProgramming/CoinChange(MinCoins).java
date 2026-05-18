@@ -75,11 +75,11 @@ public class Main
 
 		    if(j % coins[0] == 0){
 
-		        dp[0][j] = j;
+		        dp[0][j] = j/coins[i];
 		    }
 		    else{
 
-		        dp[0][j] = 0;
+		        dp[0][j] = 10000;
 		    }
 		}
 
