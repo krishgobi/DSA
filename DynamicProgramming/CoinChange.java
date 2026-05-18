@@ -70,45 +70,34 @@ O(amount)
 
 import java.util.*;
 
+
 public class Main
 {
-    public static int coinChange(int[] coins, int amount){
-
-        int[] dp = new int[amount + 1];
-
-        // Fill with large value
-        Arrays.fill(dp, Integer.MAX_VALUE);
-
-        // Base case
-        dp[0] = 0;
-
-        // Build DP array
-        for(int i = 1; i <= amount; i++){
-
-            for(int coin : coins){
-
-                if(i - coin >= 0 && dp[i - coin] != Integer.MAX_VALUE){
-
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-                }
-            }
-        }
-
-        // If impossible
-        if(dp[amount] == Integer.MAX_VALUE){
-
-            return -1;
-        }
-
-        return dp[amount];
-    }
-
 	public static void main(String[] args) {
-
-		int[] coins = {1,2,5};
-
-		int amount = 11;
-
-		System.out.println(coinChange(coins, amount));
+		int[] coins={1,2,5,10};
+		int amount=10;
+		int[][] dp=new int[coins.length][amount+1];
+		for(int i=0;i<coins.length;i++){
+		    dp[i][0]=1;
+		}
+		for(int j=1;j<=10;j++){
+		    if(j%coins[0]==0){
+		        dp[0][j]=1;
+		    }
+		    else{
+		        dp[0][j]=0;
+		    }
+		}
+		for(int i=1;i<coins.length;i++){
+		    for(int j=1;j<=amount;j++){
+		        if(j<coins[i]){
+		            dp[i][j]=dp[i-1][j];
+		        }
+		        else{
+		            dp[i][j]=dp[i-1][j]+dp[i][j-coins[i]];
+		        }
+		    }
+		}
+		System.out.print(dp[coins.length-1][amount]);
 	}
 }
